@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     };
     
     //Em alguns sistemas você pode precisar mudar o %ld para
-    //%u já que vai ser utilizada um inteiro sem sinal
+    //%u já que vai ser utilizado um inteiro sem sinal
     printf("The size of an int: %ld\n", sizeof(int));
     printf("The size of areas (int[]): %ld\n", sizeof(areas));
     printf("The number of ints in areas: %ld\n", sizeof(areas) /
