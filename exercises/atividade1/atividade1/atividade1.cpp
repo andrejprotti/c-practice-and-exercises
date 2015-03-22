@@ -18,7 +18,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	printf("Exponencial 2^10: %d\n", testeExponencial);
 	printf("e^2: %f\n", testeExponencialEuler);
 
-	scanf("%d", parada);
+	scanf("%d", &parada);
 
 	return 0;
 }
