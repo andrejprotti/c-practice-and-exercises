@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
     
     yPtr = &y;
     
-    printf("%x\n", yPtr);
+    printf("%p\n", yPtr);
     
     return 0;
 }
