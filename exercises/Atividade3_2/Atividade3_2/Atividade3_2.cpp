@@ -44,6 +44,7 @@ void mazeTraverse(const int size, char maze[][12], int x, int y, int xFim, int y
 
 	maze[x][y] = 'X';
 	printMaze(maze);
+	maze[x][y] = '.';
 
 	//Comportamento do X para cada sentido de movimento
 	//sentido 1 = direita/ sentido 2 = esquerda/ sentido 3 = cima/ sentido 4 = baixo
@@ -143,6 +144,6 @@ void printMaze(char maze[][12]){
 		}
 		printf("\n");
 	}
-	_sleep(250);
+	_sleep(150);
 	system("cls");
 }
