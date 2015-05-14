@@ -9,6 +9,7 @@ void printInvertedBinFile(char *nomeArquivo);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+
 	char noticias[] = "noticias.txt";
 
 	printf("PRINT de noticias.txt:\n\n");
@@ -19,6 +20,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	printf("\nIniciando PRINT do .bin em ordem reversa de linhas:\n\n");
 	printInvertedBinFile("noticias.bin");
+	printTxtFile("resultado.txt");
 
 	int espera = 0;
 	scanf("%d", &espera);
@@ -70,21 +72,63 @@ void convertTxtToBin(char *nomeArquivo, int tamanhoNome){
 	}
 }
 
+
 void printInvertedBinFile(char *nomeArquivo){
 	FILE *filePtr;
-	int c;
-	int contador = 0;
+
+	FILE *file2Ptr;
+
+	int ch;
+	int count1 = 0;
+	int count2 = 0;
+
+	char matriz[100][80];
+	
+	// ç utilizado para identificar o espaço não utilizado
+	for (int i = 0; i < 100; i++)
+	{
+		for (int j = 0; j < 80; j++)
+		{
+			matriz[i][j] = 'ç';
+		}
+	}
 
 	if ((filePtr = fopen(nomeArquivo, "rb")) == NULL){
 		printf("Arquivo nao pode ser aberto.");
 	}
 	else {
-		//Continuar daqui
-		do{
-			c = fgetc(filePtr);
-			printf("%c", c);
-			contador++;
-		} while (c != EOF);
+		if ((file2Ptr = fopen("resultado.txt", "w")) == NULL){
+			printf("Arquivo nao pode ser aberto.");
+		}
+		else {
+			do{
+				ch = fgetc(filePtr);
+				
+				if (count2 < 80){
+					matriz[count1][count2] = ch;
+					count2++;
+				}
+				else {
+					count2 = 0;
+					count1++;
+				}
+				
+			} while (ch != EOF);
+
+			printf("\n\n");
+			for (int i = 99; i >= 0; i--)
+			{
+				for (int j = 0; j < 80; j++)
+				{
+					if(matriz[i][j] != 'ç'){
+						fputc(matriz[i][j], file2Ptr);
+					}
+				}
+			}
+			
+		}
+		fclose(filePtr);
+		fclose(file2Ptr);
 
 	}
 
